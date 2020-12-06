@@ -1,3 +1,4 @@
+import { isMethodDeclaration } from "typescript";
 import calculator from "../calculator";
 
 // each of the objects in the dataset array has the pieces of a math problem.
@@ -24,4 +25,35 @@ let dataset = [
   { x: 81, y: 227, method: "divide" },
 ];
 
-describe("Calculator", () => {});
+//test calculator can do math
+describe("Calculator", () => {
+  //loop through the dataset to run through the calculator
+  dataset.forEach((cal)=>{
+    test(`Test ${cal.x} and ${cal.y} with method ${cal.method}`,() =>{
+      switch(cal.method){
+        case "add":
+          expect(calculator.add(cal.x,cal.y)).toEqual(cal.x + cal.y);
+          break;
+        case "subtract":
+          expect(calculator.subtract(cal.x,cal.y)).toEqual(cal.x - cal.y);
+          break;
+        case "multiply":
+          expect(calculator.multiply(cal.x,cal.y)).toEqual(cal.x * cal.y);
+          break;
+        case "divide":
+          expect(calculator.divide(cal.x,cal.y)).toEqual(cal.x / cal.y);
+          break;
+        default:
+          console.log("No more calculation")
+      }
+
+        
+    }) 
+
+      
+
+    
+  });
+
+
+});
