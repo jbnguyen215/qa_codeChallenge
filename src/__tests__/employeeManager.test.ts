@@ -81,7 +81,7 @@ describe("Employee Manager", () => {
       phone: "1234567891",
       title: "QA Engineer",
     });
-    await em.navigate();
+    await em.selectEmployeeByName("Eve Sparks");
     await em.selectEmployeeByName("Lou White");
     let employee = await em.getEmployeeInfo();
     expect(employee).toEqual({
